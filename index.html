@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circle - Music Player</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="music-player">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <span class="logo">circle</span>
+            </div>
+            <ul class="nav-links">
+                <li class="active"><span class="material-symbols-outlined">home</span> Home</li>
+                <li><span class="material-symbols-outlined">search</span> Search</li>
+                <li><span class="material-symbols-outlined">album</span> Playlists</li>
+                <li><span class="material-symbols-outlined">notifications</span> Notifications <span class="notification-dot"></span></li>
+                <li><span class="material-symbols-outlined">diamond</span> Premium Content</li>
+            </ul>
+            <div class="sidebar-footer">
+                 <button class="download-app-btn">Download Desktop App</button>
+                 <div class="user-profile">
+                    <img src="user.png" alt="User Avatar">
+                    <span>Hoàng Tùng Lê</span>
+                    <span class="material-symbols-outlined">expand_more</span>
+                </div>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-nav">
+                    <button class="active">Music</button>
+                    <button>Podcasts</button>
+                    <button>Jazz</button>
+                    <button>Electronic</button>
+                    <button>Rock Classic</button>
+                    <button>Hip Hop</button>
+                </div>
+                <div class="search-bar">
+                    <span class="material-symbols-outlined">search</span>
+                    <input type="text" placeholder="Search for something">
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <div class="left-pane">
+                    <section class="content-section">
+                        <h2>Popular Albums</h2>
+                        <div class="card-container">
+                            <div class="album-card">
+                                <img src="withoutu.jpg" alt="Album Cover">
+                                <h3>Without You (Single)</h3>
+                                <p>Avicii ft. Sandro Cavazza</p>
+                                <div class="card-footer">
+                                    <span>1 Track • 101K Likes</span>
+                                    <span class="material-symbols-outlined">play_circle</span>
+                                </div>
+                            </div>
+                            <div class="album-card">
+                                <img src="OneNight.jpg" alt="Album Cover">
+                                <h3>One Night (Single)</h3>
+                                <p>Lil Yachty</p>
+                                <div class="card-footer">
+                                    <span>1 Track • 50K Likes</span>
+                                    <span class="material-symbols-outlined">play_circle</span>
+                                </div>
+                            </div>
+                             <div class="album-card">
+                                <img src="Lover.jpg" alt="Album Cover">
+                                <h3>Lover </h3>
+                                <p>Taylor Swift</p>
+                                <div class="card-footer">
+                                    <span>5 Tracks • 129K Likes</span>
+                                    <span class="material-symbols-outlined">play_circle</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="content-section">
+                        <h2>Picked for you</h2>
+                        <div class="picked-for-you-card">
+                            <img src="Pick.jpg" alt="Picked for you">
+                            <div class="picked-content">
+                                <span class="playlist-tag">PLAYLIST</span>
+                                <h3>One of One</h3>
+                                <p>2020</p>
+                                <div class="playlist-details">
+                                    <span>37:04</span>
+                                    <span>1.3K Likes</span>
+                                    <span>13 Tracks</span>
+                                </div>
+                                <div class="playlist-tags">
+                                    <span>Rock Classic</span>
+                                    <span>Ballad</span>
+                                    <span>Hip Hop</span>
+                                </div>
+                            </div>
+                            <div class="picked-actions">
+                                <span class="material-symbols-outlined">favorite_border</span>
+                                <span class="material-symbols-outlined">share</span>
+                                <span class="material-symbols-outlined play-icon-large">play_circle</span>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section class="content-section">
+                        <h2>Recent</h2>
+                        <ul class="song-list">
+                            <li>
+                                <div class="song-info">
+                                    <span>1</span>
+                                    <img src="Whatdoumean.jpg" alt="Song cover">
+                                    <div>
+                                        <h4>Sorry</h4>
+                                        <p>Justin Bieber</p>
+                                    </div>
+                                </div>
+                                <div class="song-album">Purpose (Deluxe)</div>
+                                <div class="song-meta">
+                                    <span>3:20</span>
+                                    <span class="material-symbols-outlined">favorite_border</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+
+                <aside class="right-pane">
+                    <section class="content-section">
+                        <h2>Popular Artists</h2>
+                        <div class="artist-grid">
+                            <div class="artist-circle">
+                                <img src="Cuco.jpg" alt="Cuco">
+                                <p>Cuco</p>
+                            </div>
+                             <div class="artist-circle">
+                                <img src="Laufey.jpg" alt="Laufey">
+                                <p>Laufey</p>
+                            </div>
+                             <div class="artist-circle">
+                                <img src="Justin.jpg" alt="Justin Bieber">
+                                <p>Justin Bieber</p>
+                            </div>
+                             <div class="artist-circle">
+                                <img src="Kendrick.jpg" alt="Kendrick Lamar">
+                                <p>Kendrick Lamar</p>
+                            </div>
+                             <div class="artist-circle">
+                                <img src="Kyle.jpg" alt="Kyle">
+                                <p>Kyle</p>
+                            </div>
+                             <div class="artist-circle">
+                                <img src="Yachty.jpg" alt="Lil Yachty">
+                                <p>Lil Yachty</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="content-section">
+                        <h2>Top Podcasts</h2>
+                        <div class="podcast-container">
+                            <div class="podcast-card">
+                                <img src="Tedtalk.jpg" alt="Podcast">
+                                <p>TED Talks Daily</p>
+                            </div>
+                             <div class="podcast-card">
+                                <img src="hieutv.jpg" alt="Podcast">
+                                <p>HIEU.TV</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="content-section">
+                        <h2>Next in Queue</h2>
+                        <ul class="queue-list">
+                            <li>
+                                <img src="Lover.jpg" alt="Song cover">
+                                <div>
+                                    <h4>Lover</h4>
+                                    <p>Taylor Swift</p>
+                                </div>
+                                <span>03:41</span>
+                                <span class="material-symbols-outlined">play_arrow</span>
+                            </li>
+                             <li>
+                                <img src="3strike.jpg" alt="Song cover">
+                                <div>
+                                    <h4>3 Strikes</h4>
+                                    <p>Terror Jr</p>
+                                </div>
+                                <span>02:55</span>
+                                <span class="material-symbols-outlined">play_arrow</span>
+                            </li>
+                        </ul>
+                    </section>
+                </aside>
+            </div>
+        </main>
+
+        <footer class="now-playing-bar">
+            <div class="song-details">
+                 <img src="Whatdoumean.jpg" alt="Now Playing">
+                 <div>
+                     <h4>What Do You Mean?</h4>
+                     <p>Justin Bieber</p>
+                 </div>
+                 <span class="material-symbols-outlined">favorite_border</span>
+            </div>
+            <div class="player-controls">
+                <div class="controls">
+                    <span class="material-symbols-outlined">shuffle</span>
+                    <span class="material-symbols-outlined">skip_previous</span>
+                    <span class="material-symbols-outlined play-icon-large">play_circle</span>
+                    <span class="material-symbols-outlined">skip_next</span>
+                    <span class="material-symbols-outlined">repeat</span>
+                </div>
+                <div class="progress-bar">
+                    <span>02:13</span>
+                    <div class="bar">
+                        <div class="progress"></div>
+                    </div>
+                    <span>-01:11</span>
+                </div>
+            </div>
+             <div class="volume-controls">
+                <span class="material-symbols-outlined">volume_up</span>
+                <span class="material-symbols-outlined">mic</span>
+                <span class="material-symbols-outlined">playlist_play</span>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
