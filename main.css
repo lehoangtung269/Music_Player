@@ -9,12 +9,21 @@
     --white: #FFFFFF;
     --border-color: #2a3a50;
     --card-bg: #1e2a47;
+
+    /* --- MỚI: Biến cho hiệu ứng chuyển động --- */
+    --transition-fast: 0.2s ease-in-out;
+    --transition-slow: 0.3s ease-in-out;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+/* --- MỚI: Giúp cuộn mượt mà hơn --- */
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -29,6 +38,29 @@ h2 {
     font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 1.2rem;
+}
+
+/* --- MỚI: Keyframes cho Animations --- */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 0.8;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
@@ -51,6 +83,14 @@ h2 {
     flex-direction: column;
 }
 
+/* --- CHỈNH SỬA: Thêm position-relative để chứa nút close --- */
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
 .sidebar-header .logo {
     font-size: 1.8rem;
     font-weight: bold;
@@ -69,9 +109,11 @@ h2 {
     display: flex;
     align-items: center;
     cursor: pointer;
-    transition: background-color 0.2s;
     font-weight: 500;
     position: relative; 
+    
+    /* --- CHỈNH SỬA: Thêm Transition --- */
+    transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
 .nav-links li:hover {
@@ -97,6 +139,9 @@ h2 {
     height: 8px;
     background-color: var(--active-highlight);
     border-radius: 50%;
+    
+    /* --- MỚI: Thêm Animation "pulse" --- */
+    animation: pulse 1.5s infinite ease-in-out;
 }
 
 .sidebar-footer {
@@ -112,6 +157,15 @@ h2 {
     border-radius: 20px;
     cursor: pointer;
     margin-bottom: 1.5rem;
+
+    /* --- MỚI: Thêm Transition --- */
+    transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+/* --- MỚI: Hiệu ứng hover cho nút --- */
+.download-app-btn:hover {
+    background-color: var(--accent-blue);
+    border-color: var(--accent-blue);
 }
 
 .user-profile {
@@ -133,6 +187,18 @@ h2 {
     flex-grow: 1;
 }
 
+/* --- MỚI: Các nút điều khiển sidebar (ẩn trên desktop) --- */
+.mobile-menu-btn,
+.mobile-close-btn {
+    display: none; /* Ẩn trên desktop */
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 2rem;
+    z-index: 1001; /* Đảm bảo nút luôn ở trên cùng */
+}
+
 
 .main-content {
     grid-area: main;
@@ -145,6 +211,7 @@ h2 {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
+    position: relative; /* Dùng cho responsive */
 }
 
 .header-nav button {
@@ -154,6 +221,13 @@ h2 {
     font-size: 1rem;
     margin-right: 1.5rem;
     cursor: pointer;
+
+    /* --- MỚI: Thêm Transition --- */
+    transition: color var(--transition-fast);
+}
+
+.header-nav button:hover {
+    color: var(--white);
 }
 
 .header-nav button.active {
@@ -204,7 +278,24 @@ h2 {
     background-color: var(--card-bg);
     padding: 1rem;
     border-radius: 10px;
+    
+    /* --- MỚI: Thêm Transition và Animation --- */
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    opacity: 0; /* Bắt đầu ẩn */
+    animation: fadeIn 0.5s ease-out forwards; /* 'forwards' giữ trạng thái cuối */
 }
+
+/* --- MỚI: Hiệu ứng Staggered (xuất hiện lần lượt) cho các card --- */
+.album-card:nth-child(1) { animation-delay: 0.1s; }
+.album-card:nth-child(2) { animation-delay: 0.2s; }
+.album-card:nth-child(3) { animation-delay: 0.3s; }
+
+/* --- MỚI: Hiệu ứng "nâng" card lên khi hover --- */
+.album-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
 
 .album-card img {
     width: 100%;
@@ -232,10 +323,15 @@ h2 {
     color: var(--text-secondary);
 }
 
-.card-footer .material-symbols-outlined {
+/* --- MỚI: Đổi tên class và thêm transition --- */
+.play-icon-small {
     font-size: 2rem;
     color: var(--white);
     cursor: pointer;
+    transition: transform var(--transition-fast);
+}
+.play-icon-small:hover {
+    transform: scale(1.1);
 }
 
 
@@ -280,6 +376,7 @@ h2 {
     font-size: 0.8rem;
     margin-bottom: 0.5rem;
     color: #d0d0d0;
+    flex-wrap: wrap; /* --- MỚI: Cho phép xuống dòng nếu không đủ chỗ --- */
 }
 
 .playlist-tags span {
@@ -298,6 +395,11 @@ h2 {
 .play-icon-large {
     font-size: 3rem !important;
     cursor: pointer;
+    /* --- MỚI: Thêm Transition --- */
+    transition: transform var(--transition-fast);
+}
+.play-icon-large:hover {
+    transform: scale(1.1);
 }
 
 /* Recent */
@@ -307,6 +409,8 @@ h2 {
     align-items: center;
     padding: 0.8rem;
     border-radius: 8px;
+    /* --- MỚI: Thêm Transition --- */
+    transition: background-color var(--transition-fast);
 }
 
 .song-list li:hover {
@@ -389,6 +493,8 @@ h2 {
     padding: 0.5rem;
     border-radius: 5px;
     margin-bottom: 0.5rem;
+    /* --- MỚI: Thêm Transition --- */
+    transition: background-color var(--transition-fast);
 }
 
 .queue-list li:hover {
@@ -455,6 +561,14 @@ h2 {
     font-size: 1.8rem;
     cursor: pointer;
     color: var(--text-secondary);
+    /* --- MỚI: Thêm Transition --- */
+    transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+/* --- MỚI: Hiệu ứng hover cho icon controls --- */
+.controls .material-symbols-outlined:hover {
+    color: var(--white);
+    transform: scale(1.1);
 }
 
 .controls .play-icon-large {
@@ -497,4 +611,158 @@ h2 {
 }
 .volume-controls .material-symbols-outlined {
     color: var(--text-secondary);
+}
+
+
+/* ==============================================
+    --- MỚI: PHẦN RESPONSIVE DESIGN --- 
+==============================================
+*/
+
+/* --- 1. Breakpoint cho Tablet (Ví dụ: <= 1200px) --- */
+@media (max-width: 1200px) {
+    .content-wrapper {
+        /* Chuyển 2 cột main/aside thành 1 cột */
+        grid-template-columns: 1fr;
+    }
+
+    .artist-grid {
+        /* Cho phép 5 nghệ sĩ trên 1 hàng thay vì 3 */
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    }
+}
+
+
+/* --- 2. Breakpoint cho Mobile (Ví dụ: <= 768px) --- */
+@media (max-width: 768px) {
+    body {
+        overflow: auto; /* Cho phép cuộn trên mobile */
+    }
+
+    .music-player {
+        /* Chỉ còn 1 cột chính, sidebar sẽ trượt ra/vào */
+        grid-template-columns: 1fr; 
+        grid-template-areas:
+            "main"
+            "player";
+        height: auto; /* Chiều cao tự động */
+    }
+
+    .sidebar {
+        /* --- CHỈNH SỬA: Biến sidebar thành dạng trượt --- */
+        position: fixed; /* Nằm cố định trên màn hình */
+        left: -100%; /* Ẩn hoàn toàn sang bên trái */
+        top: 0;
+        bottom: 0;
+        width: 280px; /* Độ rộng khi trượt ra */
+        z-index: 1000;
+        transition: left var(--transition-slow); /* Hiệu ứng trượt */
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    .sidebar.is-open {
+        left: 0; /* Hiện ra khi có class .is-open */
+    }
+
+    /* Hiện các nút điều khiển mobile */
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .mobile-close-btn {
+        display: block;
+    }
+
+    .main-content {
+        padding: 1rem; /* Giảm padding trên mobile */
+    }
+
+    .main-header {
+        /* Sắp xếp lại header */
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .mobile-menu-btn {
+        position: absolute; /* Đưa nút menu lên góc phải */
+        top: 0;
+        right: 0;
+    }
+
+    .header-nav {
+        order: 2; /* Nằm dưới search bar */
+        width: 100%;
+        overflow-x: auto; /* Cho phép cuộn ngang các mục nav */
+        white-space: nowrap;
+    }
+
+    .search-bar {
+        order: 1; /* Nằm trên cùng */
+        width: 100%;
+    }
+    .search-bar input {
+        width: 100%;
+    }
+
+    .picked-for-you-card {
+        flex-direction: column; /* Xếp chồng các mục trong card */
+    }
+    .picked-for-you-card img {
+        width: 100%;
+        height: 180px; /* Sửa lại chiều cao */
+    }
+
+    .song-list li {
+        /* Đơn giản hóa danh sách bài hát */
+        grid-template-columns: 1fr auto; /* Chỉ còn thông tin và meta */
+        gap: 0.5rem;
+    }
+    .song-album {
+        display: none; /* Ẩn cột album */
+    }
+    .song-meta {
+        gap: 1rem;
+    }
+    .song-info div h4 {
+        font-size: 0.9rem;
+    }
+
+    /* --- CHỈNH SỬA: Đơn giản hóa thanh Player --- */
+    .now-playing-bar {
+        grid-template-columns: auto 1fr; /* Ảnh + phần còn lại */
+        gap: 1rem;
+        padding: 0.8rem;
+    }
+
+    /* Ẩn chữ, chỉ để lại ảnh */
+    .song-details div {
+        display: none;
+    }
+    .song-details .material-symbols-outlined {
+        display: none; /* Ẩn icon yêu thích */
+    }
+
+    .player-controls {
+        gap: 0.2rem;
+    }
+
+    .progress-bar {
+        max-width: none; /* Cho phép thanh progress giãn hết cỡ */
+    }
+
+    /* Ẩn các nút điều khiển không cần thiết */
+    .controls span:nth-child(1), /* shuffle */
+    .controls span:nth-child(5) { /* repeat */
+        display: none;
+    }
+
+    .volume-controls {
+        /* Chỉ giữ lại icon volume */
+        display: flex;
+        justify-content: flex-end;
+    }
+    .volume-controls .material-symbols-outlined:not(:first-child) {
+        display: none;
+    }
 }
